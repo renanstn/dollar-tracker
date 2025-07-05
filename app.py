@@ -1,30 +1,12 @@
 import logging
 import os
-import sqlite3
 from datetime import datetime
 
 import requests
 from dotenv import load_dotenv
 
 from custom_types import DollarData
-from sql_queries import create_table_query, insert_values_query
-
-
-class Database:
-    """
-    TODO: Adapt for postgres.
-    """
-
-    load_dotenv()
-    connection = sqlite3.connect(os.getenv("DATABASE_URL"))
-    cursor = connection.cursor()
-
-    def create_table(self):
-        self.cursor.execute(create_table_query)
-
-    def load_values(self, datetime: datetime, value: int):
-        self.cursor.execute(insert_values_query, (datetime.isoformat(), value))
-        self.connection.commit()
+from database import Database
 
 
 class API:

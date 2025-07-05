@@ -1,0 +1,26 @@
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: dollar
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+
+  show:
+    image: postgres
+    env_file:
+      - .env
+    depends_on:
+      - db
+    entrypoint: ["/bin/sh", "/scripts/check_db_postgres.sh"]
+    volumes:
+      - ./check_db_postgres.sh:/scripts/check_db_postgres.sh
