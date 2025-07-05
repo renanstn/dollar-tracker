@@ -1,40 +1,30 @@
+import logging
 import os
 import sqlite3
 from datetime import datetime
-from typing import TypedDict
 
 import requests
 from dotenv import load_dotenv
+
+from custom_types import DollarData
+from sql_queries import create_table_query, insert_values_query
 
 
 class Database:
     """
     TODO: Adapt for postgres.
     """
+
     load_dotenv()
     connection = sqlite3.connect(os.getenv("DATABASE_URL"))
     cursor = connection.cursor()
 
     def create_table(self):
-        self.cursor.execute("""
-            CREATE TABLE IF NOT EXISTS dollar (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                datehour TEXT NOT NULL,
-                value INTEGER NOT NULL
-            )
-        """)
+        self.cursor.execute(create_table_query)
 
-    def load_values(self, datetime, value):
-        self.cursor.execute("""
-            INSERT INTO dollar (datehour, value)
-            VALUES (?, ?)
-        """, (datetime.isoformat(), value))
+    def load_values(self, datetime: datetime, value: int):
+        self.cursor.execute(insert_values_query, (datetime.isoformat(), value))
         self.connection.commit()
-
-
-class DollarData(TypedDict):
-    timestamp: int
-    dollar_value: int
 
 
 class API:
@@ -42,6 +32,11 @@ class API:
     api_key = os.getenv("API_KEY")
     url = "https://economia.awesomeapi.com.br/json/last/USD-BRL"
     target_value = "bid"  # or "ask"?
+    logging.basicConfig(
+        level=logging.ERROR,
+        format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    )
+    logger = logging.getLogger(__name__)
 
     @classmethod
     def get_data(cls) -> DollarData:
@@ -51,7 +46,7 @@ class API:
         """
         response = requests.get(f"{cls.url}?token={cls.api_key}")
         if response.status_code != 200:
-            # TODO: Report error
+            cls.logger.exception(f"API response was not 200: {response.text}")
             return
         data = response.json()
         timestamp = int(data["USDBRL"]["timestamp"])
@@ -59,6 +54,7 @@ class API:
         dollar_value = str(round(float(dollar_value_str), 2))
         dollar_value_int = int(dollar_value.replace(".", ""))
         return {"timestamp": timestamp, "dollar_value": dollar_value_int}
+
 
 # Test area -------------------------------------------------------------------
 test = API()

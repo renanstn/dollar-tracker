@@ -17,5 +17,6 @@ pip install -r requirements.txt
 ## .env
 
 ```
-API_KEY=<api_key>
+API_KEY=
+DATABASE_URL=
 ```
