@@ -12,6 +12,9 @@ Consome a API https://awesomeapi.com.br para obter os valores.
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
+# Optional for development only
+pip install black
+pip install isort
 ```
 
 ## .env
