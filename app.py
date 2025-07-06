@@ -36,16 +36,3 @@ class API:
         dollar_value = str(round(float(dollar_value_str), 2))
         dollar_value_int = int(dollar_value.replace(".", ""))
         return {"timestamp": timestamp, "dollar_value": dollar_value_int}
-
-
-# Test area -------------------------------------------------------------------
-test = API()
-database = Database()
-
-data = test.get_data()
-print(data)
-
-datetime = datetime.fromtimestamp(int(data["timestamp"]))
-
-database.create_table()
-database.load_values(datetime, data["dollar_value"])
