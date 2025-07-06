@@ -41,3 +41,11 @@ A detecção do ambiente e do banco é feita automaticamente a partir da variáv
 API_KEY=
 DATABASE_URL=
 ```
+
+## Railway
+
+Para conseguir rodar este projeto no Railway, devido a suas limitações, eu precisei seguir esses passos:
+
+1. Alterar o `CMD` do Dockerfile para executar o script `create_database.py`, comitar, e deixar o Railway executar isso
+2. Alterar o `CMD` do Dockerfile de volta para executar o `run_get_data.py`
+3. Programar um Cron no Railway para executar de hora em hora o container.
