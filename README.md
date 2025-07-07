@@ -14,12 +14,12 @@ Instalando as dependências localmente para testes com sqlite:
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-# Optional for development only
+# Opcional para desenvolvimento apenas
 pip install black
 pip install isort
 ```
 
-Rodando black e isort:
+Rodando black e isort para padronizar o código e ordenar os imports:
 
 ```sh
 black --line-length 79 . && isort .
