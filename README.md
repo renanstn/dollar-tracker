@@ -53,5 +53,5 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 
 ## TODO
 
-- [ ] Arrumar bug de timezone
+- [x] Arrumar bug de timezone
 - [ ] Frontend para visualização
