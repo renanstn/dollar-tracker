@@ -1,8 +1,17 @@
 services:
-  app:
+  data_collector:
     build: data_collector/
     env_file:
       - data_collector/.env
+    depends_on:
+      - db
+
+  api:
+    build: api/
+    ports:
+      - "5000:5000"
+    env_file:
+      - api/.env
     depends_on:
       - db
 

@@ -11,4 +11,5 @@ COPY \
 	run_get_data.py \
 	sql_queries.py \
 	.
+# CMD ["python", "create_database.py"]
 CMD ["python", "run_get_data.py"]

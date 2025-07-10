@@ -19,8 +19,7 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 # Opcional para desenvolvimento apenas
-pip install black
-pip install isort
+pip install black isort
 ```
 
 Rodando black e isort para padronizar o código e ordenar os imports:
