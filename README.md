@@ -59,11 +59,14 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 ## TODO
 
 - [x] Arrumar bug de timezone
+- [x] API para servir os dados
 - [ ] Frontend para visualização
 
 # API
 
-Vem ai...
+## Descrição
+
+Upa API simples feita em Flask para servir os dados coletados para o frontend.
 
 # Frontend
 
