@@ -1,8 +1,8 @@
 services:
   app:
-    build: .
+    build: data_collector/
     env_file:
-      - .env
+      - data_collector/.env
     depends_on:
       - db
 
@@ -18,7 +18,7 @@ services:
   show:
     image: postgres
     env_file:
-      - .env
+      - data_collector/.env
     depends_on:
       - db
     entrypoint: ["/bin/sh", "/scripts/check_db_postgres.sh"]
