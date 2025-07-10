@@ -3,10 +3,9 @@ import os
 from datetime import datetime
 
 import requests
-from dotenv import load_dotenv
-
 from custom_types import DollarData
 from database import Database
+from dotenv import load_dotenv
 
 
 class API:

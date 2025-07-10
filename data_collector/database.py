@@ -4,11 +4,12 @@ from datetime import datetime
 
 import psycopg2
 from dotenv import load_dotenv
-
-from sql_queries import (create_table_query_postgres,
-                         create_table_query_sqlite,
-                         insert_values_query_postgres,
-                         insert_values_query_sqlite)
+from sql_queries import (
+    create_table_query_postgres,
+    create_table_query_sqlite,
+    insert_values_query_postgres,
+    insert_values_query_sqlite,
+)
 
 
 class Database:
