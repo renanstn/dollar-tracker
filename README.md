@@ -1,8 +1,12 @@
 # dollar-tracker
 
+Meu app de tracking e visualização do preço do dólar diário.
+
+# Data Collector
+
 ## Descrição
 
-Meu app de tracking do preço do dólar diário.
+Serviço que coleta o valor do dólar de hora em hora.
 
 Consome a API https://awesomeapi.com.br para obter os valores.
 
