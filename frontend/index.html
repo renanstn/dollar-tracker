@@ -5,10 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dollar Price Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        #current-price {
+            font-size: 48px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <canvas id="chart" style="max-width: 1200px; max-height: 800px;"></canvas>
+    <div>
+        <canvas id="chart" style="max-width: 1200px; max-height: 800px;"></canvas>
+    </div>
+    <div id="current-price">--</div>
 
     <script>
         async function loadData() {
@@ -17,7 +35,8 @@
 
             const labels = data.map(item => new Date(item.datehour).toLocaleString());
             const values = data.map(item => item.value);
-
+            const currentPrice = values[values.length - 1];
+            document.getElementById("current-price").innerText = `R$ ${currentPrice.toFixed(2)}`;
             const ctx = document.getElementById('chart').getContext('2d');
             new Chart(ctx, {
                 type: 'line',
@@ -26,8 +45,8 @@
                     datasets: [{
                         label: 'Dollar Price',
                         data: values,
-                        borderColor: 'blue',
-                        backgroundColor: 'lightblue',
+                        borderColor: 'green',
+                        backgroundColor: 'lightgreen',
                         tension: 0.1
                     }]
                 },
