@@ -61,3 +61,11 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 
 - [x] Arrumar bug de timezone
 - [ ] Frontend para visualização
+
+# API
+
+Vem ai...
+
+# Frontend
+
+Vem ai...
