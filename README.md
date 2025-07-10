@@ -50,8 +50,8 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 
 1. Alterar o `CMD` do Dockerfile para executar o script `create_database.py`, comitar, e deixar o Railway executar isso
 2. Alterar o `CMD` do Dockerfile de volta para executar o `run_get_data.py`
-3. Programar um Cron no Railway para executar de hora em hora o container.
-
+3. Programar um Cron no Railway para executar de hora em hora o container
+4. Configurar o watch path como `**/*.py` para evitar rebuilds desnecessários
 
 ## TODO
 
