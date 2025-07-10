@@ -25,7 +25,7 @@ Rodando black e isort para padronizar o código e ordenar os imports:
 black --line-length 79 . && isort .
 ```
 
-Utilizando Docker para um ambiente mais semelhante com a vida real, usando Postgres:
+Utilizando Docker para testes em um ambiente mais semelhante com a vida real, usando Postgres:
 
 ```sh
 docker compose up -d db
@@ -37,12 +37,14 @@ A detecção do ambiente e do banco é feita automaticamente a partir da variáv
 
 ## .env
 
+Crie um arquivo `.env` na raíz do projeto com os valores:
+
 ```
 API_KEY=
 DATABASE_URL=
 ```
 
-## Railway
+## Railway.io
 
 Para conseguir rodar este projeto no Railway, devido a suas limitações, eu precisei seguir esses passos:
 
