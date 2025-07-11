@@ -33,9 +33,14 @@ black --line-length 79 . && isort .
 Utilizando Docker para testes em um ambiente mais semelhante com a vida real, usando Postgres:
 
 ```sh
+# Subir o banco
 docker compose up -d db
-docker compose up app
+# Executar o script de coleta
+docker compose up data_collector
+# Exibir os valores salvos no banco (apenas para consulta)
 docker compose up show
+# Subir a api
+docker compose up api
 ```
 
 A detecção do ambiente e do banco é feita automaticamente a partir da variável de ambiente `DATABASE_URL`.
