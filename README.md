@@ -2,6 +2,8 @@
 
 Meu app de tracking e visualização do preço do dólar diário.
 
+O projeto é dividido em 3 partes, uma em cada pasta.
+
 # Data Collector
 
 ## Descrição
@@ -60,14 +62,14 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 
 - [x] Arrumar bug de timezone
 - [x] API para servir os dados
-- [ ] Frontend para visualização
+- [x] Frontend para visualização
 
 # API
 
 ## Descrição
 
-Upa API simples feita em Flask para servir os dados coletados para o frontend.
+Upa API simples feita em Flask para servir os dados salvos no banco para o frontend.
 
 # Frontend
 
-Vem ai...
+O mais simples possível, estático, sem usar porra de framework nenhum.
