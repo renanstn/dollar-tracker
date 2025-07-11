@@ -5,20 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Dollar Price Chart</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        #current-price {
-            font-size: 48px;
-            font-weight: bold;
-            color: green;
-        }
-    </style>
 </head>
 
 <body>
     <div>
-        <canvas id="chart" style="max-width: 1200px; max-height: 800px;"></canvas>
+        <canvas id="chart" style="width: 100%; height: auto; max-height: 800px;"></canvas>
     </div>
-    <div id="current-price">--</div>
+    <div id="current-price" style="font-size: 48px; font-weight: bold; color: green;">--</div>
 
     <script>
         async function loadData() {
