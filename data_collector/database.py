@@ -9,6 +9,7 @@ from sql_queries import (
     create_table_query_sqlite,
     insert_values_query_postgres,
     insert_values_query_sqlite,
+    get_last_datehour_query_postgres,
 )
 
 
@@ -43,3 +44,10 @@ class Database:
                 insert_values_query_postgres, (datetime, value)
             )  # passa datetime como objeto
             self.connection.commit()
+
+    def get_last_datehour(self):
+        self.cursor.execute(get_last_datehour_query_postgres)
+        rows = self.cursor.fetchall()
+        if not rows:
+            return []
+        return rows[0][0]

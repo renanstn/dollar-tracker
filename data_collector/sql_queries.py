@@ -23,3 +23,10 @@ insert_values_query_postgres = """
     INSERT INTO dollar (datehour, value)
     VALUES (%s, %s)
 """
+
+get_last_datehour_query_postgres = """
+    SELECT datehour
+    FROM dollar
+    ORDER BY id DESC
+    LIMIT 1
+"""
