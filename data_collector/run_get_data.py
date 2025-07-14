@@ -13,8 +13,6 @@ datetime_utc = datetime.fromtimestamp(int(data["timestamp"]))
 datetime_with_timezone = pytz.utc.localize(datetime_utc).astimezone(tz)
 
 last_datehour = database.get_last_datehour()
-if last_datehour and datetime_with_timezone == datetime.fromisoformat(
-    last_datehour
-):
+if last_datehour and datetime_with_timezone == last_datehour:
     exit()
 database.load_values(datetime_with_timezone, data["dollar_value"])
