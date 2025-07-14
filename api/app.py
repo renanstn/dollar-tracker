@@ -17,7 +17,7 @@ connection = psycopg2.connect(DATABASE_URL)
 @app.route("/")
 def get_data():
     with connection.cursor() as cursor:
-        cursor.execute("SELECT id, datehour, value FROM dollar ORDER BY id LIMIT 200")
+        cursor.execute("SELECT id, datehour, value FROM dollar ORDER BY id")
         rows = cursor.fetchall()
         values = []
         for row in rows:
