@@ -1,6 +1,7 @@
 import os
 
-import psycopg2
+# import psycopg2
+from psycopg2 import pool
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_cors import CORS
@@ -11,24 +12,33 @@ app = Flask(__name__)
 CORS(app, origins=["https://dollar-tracker.up.railway.app"])
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-connection = psycopg2.connect(DATABASE_URL)
+# connection = psycopg2.connect(DATABASE_URL)
+connection_pool = pool.SimpleConnectionPool(
+    minconn=1, maxconn=10, dsn=DATABASE_URL
+)
 
 
 @app.route("/")
 def get_data():
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT id, datehour, value FROM dollar ORDER BY id")
-        rows = cursor.fetchall()
-        values = []
-        for row in rows:
-            converted_value = int(row[2]) / 100
-            values.append(
-                {
-                    "datehour": row[1],
-                    "value": converted_value,
-                }
+    connection = connection_pool.getconn()
+    try:
+        with connection.cursor() as cursor:
+            cursor.execute(
+                "SELECT id, datehour, value FROM dollar ORDER BY id"
             )
-        return jsonify(values)
+            rows = cursor.fetchall()
+            values = []
+            for row in rows:
+                converted_value = int(row[2]) / 100
+                values.append(
+                    {
+                        "datehour": row[1],
+                        "value": converted_value,
+                    }
+                )
+            return jsonify(values)
+    finally:
+        connection_pool.putconn(connection)
 
 
 if __name__ == "__main__":
