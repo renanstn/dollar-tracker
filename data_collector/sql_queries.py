@@ -1,7 +1,7 @@
 create_table_query_sqlite = """
     CREATE TABLE IF NOT EXISTS dollar (
         id          INTEGER PRIMARY KEY AUTOINCREMENT,
-        datehour    TEXT NOT NULL,
+        datehour    TEXT UNIQUE NOT NULL,
         value       INTEGER NOT NULL
     )
 """
@@ -9,7 +9,7 @@ create_table_query_sqlite = """
 create_table_query_postgres = """
     CREATE TABLE IF NOT EXISTS dollar (
         id          SERIAL PRIMARY KEY,
-        datehour    TIMESTAMP NOT NULL,
+        datehour    TIMESTAMP UNIQUE NOT NULL,
         value       INTEGER NOT NULL
     )
 """
