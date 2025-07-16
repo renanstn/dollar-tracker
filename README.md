@@ -1,5 +1,7 @@
 # dollar-tracker
 
+[![Check Python Style with Black](https://github.com/renanstn/dollar-tracker/actions/workflows/black-check.yml/badge.svg)](https://github.com/renanstn/dollar-tracker/actions/workflows/black-check.yml)
+
 Meu app de tracking e visualização do preço do dólar diário.
 
 O projeto é dividido em 3 partes, uma em cada pasta.
