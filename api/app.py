@@ -20,6 +20,7 @@ connection_pool = pool.SimpleConnectionPool(
 def ping():
     return "pong!"
 
+
 @app.route("/")
 def get_data():
     connection = connection_pool.getconn()
