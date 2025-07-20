@@ -4,7 +4,13 @@
 
 Meu app de tracking e visualização do preço do dólar diário.
 
+Visite: http://dollar-tracker.up.railway.app
+
 O projeto é dividido em 3 partes, uma em cada pasta.
+
+- Coletor de dados (data_collector)
+- API
+- Frontend
 
 # Data Collector
 
