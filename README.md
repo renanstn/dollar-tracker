@@ -35,7 +35,7 @@ pip install black isort
 Rodando black e isort para padronizar o código e ordenar os imports:
 
 ```sh
-black --line-length 79 . && isort .
+isort . && black --line-length 79 .
 ```
 
 Utilizando Docker para testes em um ambiente mais semelhante com a vida real, usando Postgres:
