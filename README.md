@@ -76,6 +76,7 @@ Para conseguir rodar este projeto no Railway, devido a suas limitações, eu pre
 - [x] Arrumar bug de timezone
 - [x] API para servir os dados
 - [x] Frontend para visualização
+- [ ] Bug de valores com zero
 
 # API
 
