@@ -27,7 +27,7 @@ def get_data():
     try:
         with connection.cursor() as cursor:
             cursor.execute(
-                "SELECT id, datehour, value FROM dollar ORDER BY id LIMIT 200"
+                "SELECT id, datehour, value FROM dollar ORDER BY id DESC LIMIT 200"
             )
             rows = cursor.fetchall()
             values = []
