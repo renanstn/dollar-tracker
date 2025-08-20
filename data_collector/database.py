@@ -9,6 +9,7 @@ from sql_queries import (
     create_table_query_sqlite,
     insert_values_query_postgres,
     insert_values_query_sqlite,
+    clear_queries_postgres,
 )
 
 
@@ -43,3 +44,7 @@ class Database:
                 insert_values_query_postgres, (datetime, value)
             )  # passa datetime como objeto
             self.connection.commit()
+
+    def clean_wrong_values(self):
+        self.cursor.execute(clear_queries_postgres)
+        self.connection.commit()
