@@ -42,7 +42,7 @@ class Database:
         else:
             self.cursor.execute(
                 insert_values_query_postgres, (datetime, value)
-            )  # passa datetime como objeto
+            )
             self.connection.commit()
 
     def clean_wrong_values(self):

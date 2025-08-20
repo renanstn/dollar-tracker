@@ -26,12 +26,18 @@ class API:
         Dollar value will be rounded, and transformed in a integer.
         """
         response = requests.get(f"{cls.url}?token={cls.api_key}")
+
         if response.status_code != 200:
             cls.logger.exception(f"API response was not 200: {response.text}")
             return
+
         data = response.json()
+
         timestamp = int(data["USDBRL"]["timestamp"])
+
         dollar_value_str = data["USDBRL"][cls.target_value]
-        dollar_value = str(round(float(dollar_value_str), 2))
-        dollar_value_int = int(dollar_value.replace(".", ""))
+        dollar_value = float(dollar_value_str)
+        dollar_value_str = f"{dollar_value:.2f}"
+        dollar_value_int = int(dollar_value_str.replace(".", ""))
+
         return {"timestamp": timestamp, "dollar_value": dollar_value_int}
