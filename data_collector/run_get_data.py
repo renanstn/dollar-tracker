@@ -8,10 +8,6 @@ from psycopg2 import errors
 collector = API()
 database = Database()
 
-try:
-    database.clean_wrong_values()
-except Exception:
-    pass
 data = collector.get_data()
 tz = pytz.timezone("America/Sao_Paulo")
 datetime_utc = datetime.fromtimestamp(int(data["timestamp"]))

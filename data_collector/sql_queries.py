@@ -23,7 +23,3 @@ insert_values_query_postgres = """
     INSERT INTO dollar (datehour, value)
     VALUES (%s, %s)
 """
-
-clear_queries_postgres = """
-    DELETE FROM dollar WHERE value LIKE '0%'
-"""
