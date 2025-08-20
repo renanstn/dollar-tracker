@@ -25,5 +25,5 @@ insert_values_query_postgres = """
 """
 
 clear_queries_postgres = """
-    DELETE FROM dollar WHERE value BETWEEN 10 AND 99
+    DELETE FROM dollar WHERE value LIKE '0%'
 """
