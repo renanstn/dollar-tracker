@@ -9,6 +9,8 @@ collector = API()
 database = Database()
 
 data = collector.get_data()
+if not data:
+    return
 tz = pytz.timezone("America/Sao_Paulo")
 datetime_utc = datetime.fromtimestamp(int(data["timestamp"]))
 datetime_with_timezone = pytz.utc.localize(datetime_utc).astimezone(tz)
